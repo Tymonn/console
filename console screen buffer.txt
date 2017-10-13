@@ -1,0 +1,55 @@
+1、screen buffer
+一个screen buffer是由字符和颜色数据组成的二维数组，用于在控制台窗口中输出数据。
+一个控制台可以有多个screen buffer，其中被显示在屏幕上的那个，即active screen buffer。
+系统创建一个控制台的时候就会同时创建一个screen buffer，要打开一个控制台的active screen buffer的句柄，用CONOUT$作为第一个参数lpFileName调用CreateFile.
+一个进程可以通过调用 CreateConsoleScreenBuffer 给它的控制台创建额外的screen buffer。
+当把一个screen buffer的句柄当做参数调用 SetConsoleActiveScreenBuffer后，它会变成active。
+当然，一个screen buffer可以被读写，不论它是不是active的。
+
+每个screen buffer有一个记录字符信息的二维数组。每个字符数据存在一个CHAR_INFO结构中。该结构存储着Unicode or ANSI字符以及该字符显示的前景色和背景色。
+typedef struct _CHAR_INFO {
+  union {
+    WCHAR UnicodeChar;
+    CHAR  AsciiChar;
+  } Char;
+  WORD  Attributes;
+} CHAR_INFO, *PCHAR_INFO;
+
+改变一个控制台的screen buffer的属性，会改变控制台的显示。与一个screen buffer关联的属性包括：
+a. 屏幕缓冲区大小，以字符行和列为单位
+b. 文字属性，包括文字前景色和背景色
+c. 窗口大小和位置，显示在控制台窗口中的屏幕缓冲的矩形区域
+d. 光标的位置，外观，可见性
+e. 输出模式
+
+当一个screen buffer被创建的时候，充满空白字符，它的光标可见且位于缓冲区的起始位置（0,0），并且screen buffer窗口的左上角
+位于缓冲区的起始位置。
+要获取一个console screen buffer的这些属性的当前值，有如下结果api:
+GetConsoleScreenBufferInfo, 
+GetConsoleCursorInfo, 
+GetConsoleMode.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
