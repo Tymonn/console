@@ -2,9 +2,9 @@
 #include "windows.h"
 
 enum ConsoleType {
-    ConsoleTyle_Input,
-    ConsoleTyle_Output,
-    ConsoleTyle_Error
+    ConsoleType_Input,
+    ConsoleType_Output,
+    ConsoleType_Error
 };
 
 enum ConsoleColor {

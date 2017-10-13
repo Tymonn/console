@@ -3,15 +3,15 @@
 
 Console::Console(ConsoleType type) {
     switch (type) {
-        case ConsoleTyle_Input: {
+        case ConsoleType_Input: {
             console_handle_ = ::GetStdHandle(STD_INPUT_HANDLE);
             break;
         }
-        case ConsoleTyle_Output: {
+        case ConsoleType_Output: {
             console_handle_ = ::GetStdHandle(STD_OUTPUT_HANDLE);
             break;
         }
-        case ConsoleTyle_Error: {
+        case ConsoleType_Error: {
             console_handle_ = ::GetStdHandle(STD_ERROR_HANDLE);
             break;
         }

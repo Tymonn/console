@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[])
 {
-    Console c(ConsoleTyle_Output);
+    Console c(ConsoleType_Output);
     c.show_cursor(false);    
     c.clear_console(ConsoleColor_Green, ConsoleColor_White);
     //c.set_console_color(ConsoleColor_Green, ConsoleColor_White);  
